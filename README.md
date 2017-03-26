@@ -1,34 +1,45 @@
-# Ansible Role: BLANK
+# Ansible Role: `kanboard`
 
 ![Build Status](http://img.shields.io/travis/Stouts/Stouts.mongodb.svg?style=flat-square)()
 ![Galaxy](http://img.shields.io/badge/galaxy-Stouts.mongodb-blue.svg?style=flat-square)()
 
 ## Description
 
-### Requirements
+This role installs a kanboard instance on CentOS7. It can optionally use a mysql database.
 
-*
+#### NOTE: Role is not yet configured for upgrade or migration functionality - only for initial installs.
+
+### Operating Systems:
+
+* CentOS7
 
 ### Dependencies
 
+* `smacz42.common`
+* `smacz42.iptables`
+* `smacz42.httpd`
+* `smacz42.mysql`
 
-## Role Variables
+## Default Role Variables
 
 ```yaml
-variable: value # comment
+kanboard_mysql: true # Use mysql for database. `sqlite` if 'false'
+kanboard_debug: true # Generate php `debug.log` in data directory if 'true'
 ```
-
-
 
 ## Example Playbook
 
 ```yaml
-- name: BLANK
+- name: Install Kanboard on CentOS7
   hosts: all
   gather_facts: yes
 
   roles:
-    - { role: blank }
+    - { role: smacz42.common }
+    - { role: smacz42.iptables }
+    - { role: smacz42.httpd }
+    - { role: smacz42.mysql, when: kanboard_mysql }
+    - { role: kanboard }
 ```
 
 ## License
