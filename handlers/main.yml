@@ -1,0 +1,8 @@
+---
+# Handler actions. This is typically a restart of a service.
+
+- name: Restart httpd
+  systemd:
+    name: httpd
+    state: restarted
+    daemon-reload: yes

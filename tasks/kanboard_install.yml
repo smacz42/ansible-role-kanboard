@@ -1,0 +1,36 @@
+---
+# Tasks for Kanboard
+
+- name: (kanboard_install) [1/X] Webtastic repo is enabled
+  yum:
+    name: https://mirror.webtatic.com/yum/el7/webtatic-release.rpm
+    state: latest
+    validate_certs: False
+  ignore_errors: yes
+
+- name: (kanboard_install) [2/X] Kanboard programs are installed
+  package:
+    name: "{{ item }}"
+    state: latest
+  with_items:
+    - php71w
+    - php71w-mysqlnd
+    - php71w-gd
+    - php71w-mbstring
+    - php71w-common
+    - php71w-ldap
+    - php71w-opcache
+    - php71w-cli
+
+- name: (kanboard_install) [3/X] Retrieve Kanboard zip
+  get_url:
+    url: https://kanboard.net/kanboard-latest.zip
+    dest: /tmp/kanboard-latest.zip
+
+- name: (kanboard_install) [4/X] Kanboard is unzipped
+  unarchive:
+    src: /tmp/kanboard-latest.zip
+    dest: /srv/
+    remote_src: yes
+    owner: apache
+    group: apache

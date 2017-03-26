@@ -1,0 +1,7 @@
+---
+# Tasks for BLANK
+
+- include: kanboard_install.yml
+  tags: [kanboard,kanboard_install,install]
+- include: kanboard_config.yml
+  tags: [kanboard,kanboard_config,config]

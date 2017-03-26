@@ -1,0 +1,22 @@
+---
+# Tasks for BLANK
+#
+# TODO:
+#   - Configure SSO
+#   - Configure Email/notification settings
+#   - Data Dir backup
+#   - Preloaded:
+#     - tags
+#     - swimlanes
+#     - projects
+#     - colors
+#     - osu theming
+
+- name: (kanboard_config) [1/X] Template config.php is deployed
+  template:
+    src: ../templates/config.php.j2
+    dest: /srv/kanboard/config.php
+    owner: apache
+    group: apache
+    mode: 0644
+  notify: Restart httpd
