@@ -1,8 +1,5 @@
 # Ansible Role: `kanboard`
 
-![Build Status](http://img.shields.io/travis/Stouts/Stouts.mongodb.svg?style=flat-square)()
-![Galaxy](http://img.shields.io/badge/galaxy-Stouts.mongodb-blue.svg?style=flat-square)()
-
 ## Description
 
 This role installs a kanboard instance on CentOS7. It can optionally use a mysql database.

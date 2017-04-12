@@ -20,3 +20,8 @@
     group: apache
     mode: 0644
   notify: Restart httpd
+
+- name: (kanboard_config) [1/X] Files SamlAuth is deployed
+  synchronize:
+    src: ../files/SamlAuth
+    dest: /srv/kanboard/plugins/

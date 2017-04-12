@@ -21,6 +21,7 @@
     - php71w-ldap
     - php71w-opcache
     - php71w-cli
+    - php71w-xml
 
 - name: (kanboard_install) [3/X] Retrieve Kanboard zip
   get_url:
